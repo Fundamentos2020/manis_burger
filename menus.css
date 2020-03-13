@@ -58,12 +58,14 @@ ul {
       border: 1px solid #333;
       margin-left: 5px;
       margin-right: 5px;
-      transition: all ease 0.5s;
+      transition: all ease 0.8s;
+      
   }
 
   .button:hover{
     color:white;
     background-color: #333;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
 
   .button-black{
@@ -75,11 +77,12 @@ ul {
       margin-right: 5px;
       text-decoration: none;
       margin-right: 10px;
-      transition: all ease 0.5s;
+      transition: all ease 0.8s;
   }
 
   .button-black:hover{
     color: black;
     border: 1px solid #333;
     background-color: white;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
