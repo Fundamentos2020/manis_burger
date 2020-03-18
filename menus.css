@@ -1,3 +1,17 @@
+body{
+  background-image: url(http://localhost/manis_burger/res/img/body-bkg.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.layout{
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: #fff;
+  width: 90%;
+  height: 1200px;
+}
+
 .menu{
     display: flex;
 }
@@ -9,7 +23,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #fff;
   }
   
   li {
@@ -17,15 +31,24 @@ ul {
   }
   
   li a {
+    font-family: 'Bellota Text', cursive;
     display: block;
-    color: white;
+    color: black;
+    font-weight: bolder;
     text-align: center;
-    padding: 14px 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 5px;
     text-decoration: none;
+    border-radius: 10px;
+    transition: all ease 500ms;
   }
   
   li a:hover {
-    background-color: #111;
+    background-color:  #e99915;;
+    color:white;
   }
 
 
@@ -58,6 +81,7 @@ ul {
       border: 1px solid #333;
       margin-left: 5px;
       margin-right: 5px;
+      border-radius: 10px;
       transition: all ease 0.8s;
       
   }
@@ -77,6 +101,7 @@ ul {
       margin-right: 5px;
       text-decoration: none;
       margin-right: 10px;
+      border-radius: 10px;
       transition: all ease 0.8s;
   }
 
@@ -85,4 +110,9 @@ ul {
     border: 1px solid #333;
     background-color: white;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  }
+
+  border-gray{
+    border-top: solid 1px gray;
+    border-bottom: solid 1px gray;
   }

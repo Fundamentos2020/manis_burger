@@ -68,8 +68,6 @@
 
     .container-s{
         width: 100%;
-        padding-right: 15px;
-        padding-left: 15px;
         margin-right: auto;
         margin-left: auto;
         height: 100px;
@@ -118,8 +116,6 @@
 
     .container-m{
         width: 100%;
-        padding-right: 15px;
-        padding-left: 15px;
         margin-right: auto;
         margin-left: auto;
     }
@@ -147,6 +143,19 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+}
+
+
+[class*="slider-"] img{
+    width: 100%;
+    height: auto;
+  }
+  @supports(object-fit: cover){
+    [class*="slider-"] img{
+        height: auto;
+        object-fit: cover;
+        object-position: center center;
+    }
 }
 
 .flex-column { flex-direction: column; }
@@ -238,3 +247,9 @@ body{
     float: right;
 }
 
+.titulo-slider{
+    position: relative;
+    top:-50px;
+    color: red;
+    font-size: 30px;
+}
