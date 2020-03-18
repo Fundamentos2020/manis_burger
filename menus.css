@@ -1,5 +1,7 @@
+/*esta linea es para usar imagenes de google drive http://drive.google.com/uc?export=view&id=[idimagen]*/
+
 body{
-  background-image: url(http://localhost/manis_burger/res/img/body-bkg.jpg);
+  background-image: url(http://drive.google.com/uc?export=view&id=1ijgoUoZnMCu5-psmvtEEftkZXAWeeuVw);
   background-size: cover;
   background-attachment: fixed;
 }
