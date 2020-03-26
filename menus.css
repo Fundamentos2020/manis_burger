@@ -1,5 +1,6 @@
 /*esta linea es para usar imagenes de google drive http://drive.google.com/uc?export=view&id=[idimagen]*/
-
+/**814264531460-g8ap01rhclgqtusgd60qberu7h27enp7.apps.googleusercontent.com*/
+/*g8byTbWD50st3NoaGj2e0QGO*/
 body{
   background-image: url(http://drive.google.com/uc?export=view&id=1ijgoUoZnMCu5-psmvtEEftkZXAWeeuVw);
   background-size: cover;
@@ -11,7 +12,6 @@ body{
   margin-right: 5%;
   background-color: #fff;
   width: 90%;
-  height: 1200px;
 }
 
 .menu{
