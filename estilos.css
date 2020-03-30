@@ -85,7 +85,13 @@
         background-color: teal;
     }
    
-    
+    .precio-producto{
+        margin-bottom: 20px;
+    }
+
+    .descripcion{
+        margin-top: 20px;
+    }
 }
 
 @media (min-width: 768px){
