@@ -1,0 +1,208 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-image: url('../img/body-bkg.jpg');
+    
+}
+
+@media (min-width: 0px){
+    .letrero-bar{
+        font-family: 'Bellota', cursive;
+        margin-left: 45%;
+        font-size: 20px;
+    }
+
+    .menu{
+        margin-left: 5%;
+    }
+
+    .panel-foto{
+        background-image: url('../img/foto4.jpg');
+        background-size: cover;
+        height: 200px;
+    }
+}
+@media (min-width: 720px){
+    .letrero-bar{
+        font-family: 'Bellota', cursive;
+        margin-left: 85%;
+        font-size: 20px;
+    }
+
+    .menu{
+        margin-left: 2%;
+    }
+
+    
+    .panel-foto{
+        background-image: url('../img/foto4.jpg');
+        background-size: cover;
+        height: 200px;
+    }
+
+    .posicion-let{
+        
+        position: relative;
+        top: -200px;
+        left: 70px;
+        overflow: hidden;
+    }
+}
+.title-bar{
+    background-color: rgb(46, 45, 45);
+    color: white;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+
+.btn-menu{
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+}
+
+.panel-der{
+    background-color:rgba(44, 43, 43,0.5);
+    overflow: hidden;
+    visibility: hidden;
+    display: none;
+    position: absolute;
+    z-index: 999;
+}
+
+.div-btn{
+    margin-bottom: 10px;
+    width: 100%;
+    background-color: rgb(221, 83, 19);
+    text-align: center;
+    padding: 20px 30px;
+}
+
+.btn-panel{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+
+.div-btn:hover{ 
+    background-color: rgb(240, 89, 20);;
+}
+
+.letrero-panel{
+    color: white;
+    width: 100%;
+    padding: 20px 30px;
+    text-align: center;
+    font-size: 18px;
+}
+
+/*contenido*/
+
+.layout{
+    margin-left: 10%;
+    margin-right: 10%;
+   
+}
+
+.titulo-seccion{
+    color: white;
+    font-size: 30px;
+    
+    padding: 50px;
+}
+
+.seccion-contenido {
+    background-color: rgba(146, 142, 142,0.4);
+    font-family: 'Baloo Chettan 2', cursive;
+}
+
+input,textarea, select{
+    outline: none;
+    border: 0px;
+}
+
+.field{
+    border: solid 1px #ccc;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.field:focus{
+    border-color: lawngreen;
+}
+
+.label-text{
+    color: white;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+#descripcion{
+    height: 100px;
+    width: 200px;
+    resize: none;
+}
+
+table {
+    margin-top:10px;
+    margin-bottom: 20px;
+  }
+table, th, td {
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+}
+table#t01 tr:nth-child(even) {
+    background-color: rgb(196, 147, 241);
+}
+table#t01 tr:nth-child(odd) {
+    background-color: #fff;
+}
+table#t01 th {
+    background-color: rgb(179, 233, 32);
+    color: black;
+    text-align: center;
+}
+
+.pie{
+    width: 100%;
+    height: 50px;
+    border: 1px solid white;
+}
+
+.btn{
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.btn-agregar{
+    background-color: rgb(17, 224, 10);
+    color: white;
+}
+
+.btn-eliminar{
+    background-color: rgb(224, 53, 10);
+    color: white;
+}
+
+.div-btn2{
+    margin-bottom: 30px;
+}
+
+.total{
+    color: white;
+    font-size: 20px;
+    background-color: rgb(255, 99, 71);
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
