@@ -1,5 +1,5 @@
-document.getElementById('btn-menu').addEventListener('click', muestraMenu)
-var visible_panel = 0
+document.getElementById('btn-menu').addEventListener('mousedown', muestraMenu)
+let visible_panel = 1
 
 function muestraMenu(e){
     e.preventDefault()
