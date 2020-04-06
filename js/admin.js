@@ -1,7 +1,6 @@
-document.getElementById('btn-menu').addEventListener('click', muestraMenu)
 var visible_panel = 0
-
-function muestraMenu(){
+document.getElementById('btn-menu').addEventListener('click', function(e){
+    e.preventDefault()
     const panel = document.getElementById('panel')
     if(visible_panel===0)
     {
@@ -21,5 +20,8 @@ function muestraMenu(){
 
     
     panel.style.transition= 'ease 0.5s all'
-}
+
+})
+
+
 

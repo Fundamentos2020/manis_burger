@@ -6,9 +6,21 @@ body{
 }
 
 @media (min-width: 0px){
+    .overflow{
+        overflow: hidden;
+    }
+    .ocultar{
+        visibility: hidden;
+        overflow: hidden;
+    }
+    .layout{
+        margin-left: 5%;
+        margin-right: 5%;
+       
+    }
     .letrero-bar{
         font-family: 'Bellota', cursive;
-        margin-left: 45%;
+        margin-left: 30%;
         font-size: 20px;
     }
 
@@ -21,8 +33,28 @@ body{
         background-size: cover;
         height: 200px;
     }
+    .tabla{
+        overflow: scroll;
+    }
+    .center{
+        text-align: center;
+    }
 }
 @media (min-width: 720px){
+
+    .overflow{
+        overflow: visible;
+    }
+    .ocultar{
+        visibility: visible;
+        overflow: visible;
+    }
+
+    .layout{
+        margin-left: 10%;
+        margin-right: 10%;
+       
+    }
     .letrero-bar{
         font-family: 'Bellota', cursive;
         margin-left: 85%;
@@ -46,6 +78,10 @@ body{
         top: -200px;
         left: 70px;
         overflow: hidden;
+    }
+
+    .tabla{
+        overflow: auto;
     }
 }
 .title-bar{
@@ -101,11 +137,7 @@ body{
 
 /*contenido*/
 
-.layout{
-    margin-left: 10%;
-    margin-right: 10%;
-   
-}
+
 
 .titulo-seccion{
     color: white;
@@ -206,3 +238,4 @@ table#t01 th {
     border-radius: 3px;
     margin-bottom: 20px;
 }
+
