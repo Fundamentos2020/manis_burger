@@ -111,6 +111,7 @@ body{
     visibility: hidden;
     position: absolute;
     z-index: 999;
+    transition:  ease 0.5s all;
 }
 
 .div-btn{

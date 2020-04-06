@@ -4,7 +4,7 @@ let visible_panel = 1
 function muestraMenu(e){
     e.preventDefault()
     const panel = document.getElementById('panel')
-    panel.style.transition= 'ease 0.5s all'
+   
     if(visible_panel===0)
     {
         panel.style.visibility='hidden'
@@ -15,9 +15,10 @@ function muestraMenu(e){
         panel.style.visibility='visible'
         panel.style.opacity = '1'
         visible_panel=0
+
     }
 
     
-    
+     panel.style.transition= 'ease 0.5s all'
 }
 
