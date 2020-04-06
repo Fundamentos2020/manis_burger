@@ -1,6 +1,6 @@
 var visible_panel = 0
 document.getElementById('btn-menu').addEventListener('click', function(e){
-    e.preventDefault()
+    e.preventDefault(false)
     const panel = document.getElementById('panel')
     if(visible_panel===0)
     {
