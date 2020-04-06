@@ -91,6 +91,8 @@ body{
     height: 50px;
     display: flex;
     align-items: center;
+    position: sticky;
+    top:0px
 }
 
 
