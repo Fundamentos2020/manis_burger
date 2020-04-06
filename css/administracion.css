@@ -35,6 +35,8 @@ body{
         height: 200px;
     }
     .tabla{
+
+        max-width: 80%;
         overflow: scroll;
     }
     .center{
@@ -83,6 +85,7 @@ body{
     }
 
     .tabla{
+        max-width: 100%;
         overflow: auto;
     }
 }
