@@ -96,8 +96,9 @@ body{
     height: 50px;
     display: flex;
     align-items: center;
-    position: fixed !important;
-    top:0px !important;
+    position: sticky;
+    top: 0;
+    z-index: 1071;
 }
 
 
