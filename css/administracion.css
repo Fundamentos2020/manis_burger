@@ -26,6 +26,7 @@ body{
 
     .menu{
         margin-left: 5%;
+        overflow: hidden;
     }
 
     .panel-foto{
@@ -63,6 +64,7 @@ body{
 
     .menu{
         margin-left: 2%;
+        overflow: hidden;
     }
 
     
@@ -100,13 +102,13 @@ body{
     text-decoration: none;
     color: white;
     font-size: 25px;
+    background-color:  rgb(46, 45, 45); 
+    border: 0px;
 }
 
 .panel-der{
     background-color:rgba(44, 43, 43,0.5);
-    overflow: hidden;
     visibility: hidden;
-    display: none;
     position: absolute;
     z-index: 999;
 }
