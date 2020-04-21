@@ -12,11 +12,55 @@
     text-align: center;
     padding-top: 3%;
 }
-
-.card-img{
+.card-img1{
     height: 250px;
     width: 270px;
-    background-image: url();
+    background-image: url('../img/foto1.png');
+    background-size: cover;
+    background-color: green;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.card-img2{
+    height: 250px;
+    width: 270px;
+    background-image: url('../img/hawa.jpg');
+    background-size: cover;
+    background-color: green;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.card-img3{
+    height: 250px;
+    width: 270px;
+    background-image: url('../img/Colom.jpg');
+    background-size: cover;
+    background-color: green;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.card-img4{
+    height: 250px;
+    width: 270px;
+    background-image: url('../img/descarga.jfif');
+    background-size: cover;
+    background-color: green;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.card-img5{
+    height: 250px;
+    width: 270px;
+    background-image: url('../img/epaña.jpg');
+    background-size: cover;
+    background-color: green;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.card-img6{
+    height: 250px;
+    width: 270px;
+    background-image: url('../img/mexican.jpg');
     background-size: cover;
     background-color: green;
     margin-left: 5%;
