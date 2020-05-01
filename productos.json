@@ -1,0 +1,52 @@
+{
+    "productos":[
+        {
+            "id": 1,
+            "nombre": "Clasica",
+            "imagen": "../img/foto1.png",
+            "descripcion": "Es una hamburguesa sencilla con queso asadero",
+            "descuento": "10%",
+            "precio": 25.00
+        },
+        {
+            "id": 2,
+            "nombre": "Hawaina",
+            "imagen": "../img/hawa.jpg",
+            "descripcion": "Es una hamburguesa con piña asada ",
+            "descuento": "ninguno",
+            "precio": 35.00
+        },
+        {
+            "id": 3,
+            "nombre": "Colombina",
+            "imagen": "../img/Colom.jpg",
+            "descripcion": "Es una hamburguesa con queso y tocino de la mejor calidad",
+            "descuento": "10%",
+            "precio": 30.00
+        },
+        {
+            "id": 4,
+            "nombre": "Suiza",
+            "imagen": "../img/descarga.jfif",
+            "descripcion": "Es una hamburguesa con doble y extraqueso amarillo",
+            "descuento": "10%",
+            "precio": 45.00
+        },
+        {
+            "id": 5,
+            "nombre": "Española",
+            "imagen": "../img/epaña.jpg",
+            "descripcion": "Es una hamburguesa con una capa de salchichas con salsa bandera",
+            "descuento": "20%",
+            "precio": 40.00
+        },
+        {
+            "id": 6,
+            "nombre": "Mexicana",
+            "imagen": "../img/mexican.jpg",
+            "descripcion": "Es una hamburguesa con un poco de todo",
+            "descuento": "15%",
+            "precio": 55.00
+        }
+    ]
+}

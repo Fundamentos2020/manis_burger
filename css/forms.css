@@ -4,6 +4,7 @@
     box-shadow: 0px 4px 27px -1px rgba(0,0,0,0.75);
     height: 420px;
     background-color: white;
+    margin: 10px;
 }
 
 .card-title{
@@ -12,14 +13,20 @@
     text-align: center;
     padding-top: 3%;
 }
-.card-img1{
-    height: 250px;
+
+#EspacioProductos img{
+    height: 200px;
     width: 270px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.card-img1{
+   
     background-image: url('../img/foto1.png');
     background-size: cover;
     background-color: green;
-    margin-left: 5%;
-    margin-right: 5%;
+    
 }
 .card-img2{
     height: 250px;
