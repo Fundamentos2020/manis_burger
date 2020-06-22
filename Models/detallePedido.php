@@ -3,23 +3,40 @@
         private $_idDetallePedido;
         private $_cantidad;
         private $_subtotal;
-        private $_descuento;
         private $_idComboFK;
         private $_idProductoFK;
-
+        private $_idPedido;
 
         public function __construct($idDetallePedido,
          $cantidad,
          $subtotal,
-         $descuento,
          $idComboFK,
-         $idProductoFK) {
+         $idProductoFK, $idPedido) {
             $this->setIdDetallePedido($idDetallePedido);
             $this->setCantidad($cantidad);
             $this->setSubtotal($subtotal);
-            $this->setDescuento($descuento);
-            $this->setIdComboFK($idDetallePedido);
-            $this->setIdProductoFk($idProductoFK);
+            if($idComboFK===null)
+            {
+                    $this->_idComboFk= "----";
+            }
+            else{
+                $this->setIdComboFK($idComboFK);
+            }
+            if($idProductoFK===null)
+            {
+                    $this->_idProducto="----";
+            }
+            else{
+                 $this->setIdProductoFk($idProductoFK);
+            }
+           
+           
+            $this->_idPedido= $idPedido;
+        }
+
+        public function setidPedido($idPedido)
+        {
+            $this->_idPedido=$idPedido;
         }
 
         public function setIdDetallePedido($idDetallePedido)
@@ -33,10 +50,6 @@
         public function setSubtotal($subtotal)
         {
              $this-> _subtotal=$subtotal;
-        }
-        public function setDescuento($descuento)
-        {
-            $this-> _descuento=$descuento;
         }
         public function setIdComboFK($idComboFK)
         {
@@ -60,10 +73,6 @@
         {
              return $this-> _subtotal;
         }
-        public function getDescuento()
-        {
-            return $this-> _descuento;
-        }
         public function getIdComboFK()
         {
             return $this-> _idComboFK;
@@ -71,6 +80,10 @@
         public function getIdProductoFK()
         {
             return $this-> _idProductoFK;
+        }
+        public function getIdPedido()
+        {
+           return $this->_idPedido;
         }
 
         public function getArray()
@@ -80,10 +93,9 @@
             $detallepedido['idDetallePedido']=$this->getIdDetallePedido();
             $detallepedido['cantidad']=$this->getCantidad();
             $detallepedido['subtotal']=$this->GetSubtotal();
-            $detallepedido['descuento']=$this->getDescuento();
             $detallepedido['idComboFK']=$this->getIdComboFK();
             $detallepedido['idProductoFK']=$this->getIdProductoFK();
-
+            $detallepedido['idPedido']= $this->getIdPedido();
             return  $detallepedido;
 
         }

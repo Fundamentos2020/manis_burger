@@ -1,14 +1,14 @@
 <?php 
 
-class DetalleComboException extends Exception {}
-
 class DetalleCombo {
     private $_idDetalleCombo;
     private $_Producto_idProducto;
+    private $_idCombo;
 
-    public function __construct($idDetalleCombo, $Producto_idProducto) {
+    public function __construct($idDetalleCombo, $Producto_idProducto, $idCombo) {
         $this->setIDDetalleCombo($idDetalleCombo);
         $this->setProducto_idProducto($Producto_idProducto);
+        $this->_idCombo=$idCombo;
     }
 
     public function getIDDetallCombo() {
@@ -19,26 +19,31 @@ class DetalleCombo {
         return $this->_Producto_idProducto;
     }
 
+    public function getIdCombo()
+    {
+        return $this->_idCombo;
+    }
     public function setIDDetalleCombo($idDetalleCombo) {
-        if ($idDetalleCombo !== null && (!is_numeric($idDetalleCombo) || $idDetalleCombo <= 0 || $idDetalleCombo >= 2147483647 || $this->_idDetalleCombo !== null)) {
-            throw new DetalleComboException("Error en ID de Detalle del combo");
-        }
+      
         $this->_idDetalleCombo = $idDetalleCombo;
     }
     
     public function setProducto_idProducto($Producto_idProducto) {
-        if (!is_numeric($Producto_idProducto) || $Producto_idProducto <= 0 || $Producto_idProducto >= 2147483647) {
-            throw new DetalleComboException("Error en ID de producto en DetalleCombo");
-        }
+      
         $this->_Producto_idProducto = $Producto_idProducto;
+    }
+
+    public function setIdCombo($idcombo)
+    {
+        $this->_idCombo=$idcombo;
     }
 
     public function getArray() {
         $DetalleCombo = array();
 
         $DetalleCombo['idDetalleCombo'] = $this->getIDDetallCombo();
-        $DetalleCombo['Producto_idProducto'] = $this->getProdcuto_idProducto();
-
+        $DetalleCombo['idProducto'] = $this->getProdcuto_idProducto();
+        $DetalleCombo['idCombo']=$this->getIdCombo();
         return $DetalleCombo;
     }
 }

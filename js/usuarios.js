@@ -29,3 +29,5 @@ document.getElementById("btn-reg").addEventListener('click', function(e) {
         alert("Se requieren todos los campos");
     }
 });
+
+

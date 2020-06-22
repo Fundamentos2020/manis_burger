@@ -17,18 +17,18 @@
     <div class="layout" style="display: block;">
         <div class="flex-row" style="border-bottom: 1px solid gray;">
             <div class="encabezado col-m-12 col-s-12">
-                <div class="col-m-1 col-s-12">
+                <div class="col-m-1 col-s-3 offset-s-1">
                     <img src="manis burger.png" alt="logo" style="width:100px; height: 100px;">
                 </div>
                 <div class="title-logo-m title-logo-s col-m-4 col-s-12">
                     <span class="logo">Manis' Burger </span>
                 </div>
-                <div class="bar-search-group col-m-3 col-s-12 offset-m-1">
+                <!-- <div class= "bar-search-group col-m-3 col-s-12 offset-m-1">
                     <input type="text" name="search" value="" placeholder="Busqueda..." class="">
                     <a href="#" class=""><i class="fas fa-search"></i></a>
-                </div>
-                <div class="col-m-3 col-s-12  offset-s-3">
-                    <a class="button" href="registro.html">Registro</a>
+                </div>-->
+                <div class="col-m-3 col-s-12  offset-s-1 offset-m-3" id="login">
+                    <a class="button" href="usuario.html">Registro</a>
                     <a class="button-black" href="login.html">Login</a>
                 </div>
             </div>
@@ -38,12 +38,15 @@
                 style="margin-bottom: 30px; padding-top: 8px; padding-bottom: 8px; border-bottom: 1px solid gray">
                 <div style="margin-left: 1%; margin-right: 1%;">
                     <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="productos.html">Productos</a></li>
-                        <li><a href="ofertas.html">Ofertas</a> </li>
-                        <li><a href="acerca.html">Acerca De</a> </li>
-                        <li><a href="contrataciones.html">Contrataciones</a></li>
-                        <li style="float:right"><a href="carrito.html"><i class="fas fa-shopping-cart ico-shopping-car"></i>Mi Carrito</a></li>
+                        <li><a href="./index.html">Inicio</a></li>
+                        <li><a href="./productos.html">Productos</a></li>
+                        <li><a href="./ofertas.html">Ofertas</a> </li>
+                        <li><a href="./acerca.html">Acerca De</a> </li>
+                        <li><a href="./contrataciones.html">Contrataciones</a></li>
+                        <li id="adminbtn"></li>
+                        <li style="float:right"><a href="./carrito.html">
+                            <i class="fas fa-shopping-cart ico-shopping-car"></i>Mi
+                                Carrito</a></li>
                     </ul>
                 </div>
             </div>
@@ -52,16 +55,16 @@
         <div class="row">
             <div class="login col-m-10 offset-m-1 col-s-10 offset-s-1">
                 <div class="foto-login col-m-5 col-s-12">
-                    <img src="/img/logo-fondo.jpg" alt="">
+                    <img src="./img/logo-fondo.jpg" alt="">
                 </div>
                 <div class="datos-login col-m-5 col-s-12 offset-m-1">
-                    <form action="#" method="get">
+                    <div>
                         <div class="row titulo-login"> Iniciar Sesión</div>
                         <div class="row"> 
                             <div class="subtitulo">
-                                Nombre de Usuario:
+                                Correo electronico:
                             </div>
-                            <input type="text" name="" id="Usuario">
+                            <input type="text" name="" id="correo">
                         </div>
                         <div class="row">
                             <div class="subtitulo">
@@ -69,11 +72,13 @@
                             </div>
                             <input type="password" name="" id="pwd">
                         </div>
-                        <input type="submit" value="Entrar" class="btn-entrar">
-                    </form>
+                        <div class="row" style="margin-top: 25px; margin-bottom: 20px;">
+                            <a href="#" id="btn-login" class="btn-entrar" style="margin-top: 20px; text-decoration: none;">Entrar</a>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-m-10 col-s-10">
-                            No tienes Cuenta? <a href="#">Registrate!</a>
+                            No tienes Cuenta? <a href="usuario.html">Registrate!</a>
                         </div>   
                     </div>
                 </div>
@@ -82,10 +87,20 @@
         </div>
         
         <!--login-->
-        <div class="pie-pagina" style="margin-top: 40px">
-            pie de pagina
+        <div class="pie-pagina" style="display: flex; align-items: center;  justify-content: center; flex-direction: row;"> 
+            <div class="row">
+                <div class="col-m-12 col-s-12">
+                    <img src="manis burger.png" alt="logo" style="width:100px; height: 100px; background-color: white;">
+                </div>
+            </div>
+            <div class="row">
+               <div class="col-m-12 col-s-12" style="margin-left :20px;">
+                <span>Mani´s Burger Co.</span>
+               </div> 
+            </div>
         </div>
     </div>
+    <script src="./js/login.js"></script>
 </body>
 
 </html>

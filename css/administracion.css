@@ -42,6 +42,11 @@ body{
     .center{
         text-align: center;
     }
+
+    .imgCombo{
+        width: 30px;
+        height: 30px;
+    }
 }
 @media (min-width: 720px){
 
@@ -87,6 +92,11 @@ body{
     .tabla{
         max-width: 100%;
         overflow: auto;
+    }
+
+    .imgCombo{
+        width: 20px;
+        height: 20px;
     }
 }
 .title-bar{
@@ -249,3 +259,8 @@ table#t01 th {
     margin-bottom: 20px;
 }
 
+.pagado{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}

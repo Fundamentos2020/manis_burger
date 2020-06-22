@@ -2,7 +2,7 @@
 /**814264531460-g8ap01rhclgqtusgd60qberu7h27enp7.apps.googleusercontent.com*/
 /*g8byTbWD50st3NoaGj2e0QGO*/
 body{
-  background-image: url(http://drive.google.com/uc?export=view&id=1ijgoUoZnMCu5-psmvtEEftkZXAWeeuVw);
+  background-image: url(./img/body-bkg.jpg);
   background-size: cover;
   background-attachment: fixed;
 }
@@ -101,7 +101,6 @@ ul {
       margin-left: 5px;
       margin-right: 5px;
       text-decoration: none;
-      margin-right: 10px;
       border-radius: 10px;
       transition: all ease 0.8s;
   }
@@ -113,7 +112,7 @@ ul {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   }
 
-  border-gray{
+  .border-gray{
     border-top: solid 1px gray;
     border-bottom: solid 1px gray;
   }

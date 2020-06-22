@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administracion-Ofertas</title>
-    <link rel="stylesheet" href="css/administracion.css">
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="./css/administracion.css">
+    <link rel="stylesheet" href="./estilos.css">
+    <link href="./fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="./fontawesome/css/brands.css" rel="stylesheet">
+    <link href="./fontawesome/css/solid.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Baloo+2|Bellota+Text&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Bellota|Roboto&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/69dc21a533.js" crossorigin="anonymous"></script>
@@ -25,39 +28,41 @@
         </div>
         <a href="admin_Ventas.html" class="col-m-10 offset-m-1 col-s-10 offset-s-1 div-btn btn-panel">Ventas</a>
         <a href="admin_Productos.html" class="col-m-10 offset-m-1 col-s-10 offset-s-1 div-btn btn-panel">Productos</a>
-        <a href="admin_ofertas.html" class="col-m-10 offset-m-1 col-s-10 offset-s-1 div-btn btn-panel">Ofertas</a>
+        <a href="admin_ofertas.html" class="col-m-10 offset-m-1 col-s-10 offset-s-1 div-btn btn-panel">Combos</a>
         <a href="admin_Clientes.html" class="col-m-10 offset-m-1 col-s-10 offset-s-1 div-btn btn-panel">Usuarios</a>
+        <a href="./index.html" class="col-m-10 offset-m-1 col-s-10 offset-s-1 div-btn btn-panel">Pagina</a>
     </div>
 
     <div class="layout">
         <div class="row">
             <div class="seccion-contenido col-m-12 col-s-12">
                 <div class="titulo-seccion col-m-12 col-s-12">
-                    <span>Ofertas y Combos</span>
+                    <span>Combos</span>
                 </div> 
                 <div class="seccion-forms col-m-10 col-s-10 offset-m-1 offset-s-1">
                     <div class="form">
                         <div class="row">
-                            <div class="col-m-4">
+                            <div class="col-m-4 col-s-12">
                                 <div class="row">
-                                    <span class="label-text">Producto</span>
+                                    <span class="label-text">Nombre del Combo: </span>
                                 </div>
                                 <div class="row">
-                                    <select class="field" id="listaproductos">
-                                        <option value="item-1">Producto A</option>
-                                        <option value="item-2">Producto B</option>
-                                        <option value="item-3">Producto C</option>
-                                        <option value="item-4">Producto D</option>
-                                    </select>
+                                    <input type="text" class="field" id="nombreCombo">
                                 </div>
+                                <div class="row">
+                                    <span class="label-text">Precio del Combo: </span>
+                                </div>
+                                <div class="row">
+                                    <input type="text" class="field" id="precio">
+                                </div>
+                                
                                 <div class="row">
                                     <span class="label-text" >Descuento</span>
                                 </div>
                                 <div class="row">
                                     <input type="text" class="field" id="descuento">
                                 </div>
-                            </div>
-                            <div class="col-m-4">
+                                
                                 <div class="row">
                                     <span class="label-text">Descripcion</span>
                                     
@@ -65,48 +70,45 @@
                                 <div class="row">
                                     <textarea class="field" id="descripcion"></textarea>
                                 </div>
+                                <div class="row">
+                                    <div class="div-btn2">
+                                        <a href="#" class="btn btn-agregar" id="agregarCombo">Agregar</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-m-2">
-                                <div class="row div-btn2"><a href="#" class="btn btn-agregar">Agregar</a></div>
-                                <div class="row div-btn2"><a href="#" class="btn btn-eliminar">Eliminar</a></div>
+                            <div class="col-m-6 col-s-12">
+                                <div class="row">
+                                    <span class="label-text">Para Agregar un Producto a un Combo: Primero
+                                        selecciona un Combo y luego un producto.
+                                    </span>
+                                </div>
+                                <div class="row">
+                                    <span class="label-text">Combo</span>
+                                </div>
+                                <div class="row">
+                                    <select class="field" id="listCombo">
+                                    </select>
+                                </div>
+                                <div class="row">
+                                    <span class="label-text">Producto</span>
+                                </div>
+                                <div class="row">
+                                    <select class="field" id="listaproductos">
+                                        
+                                    </select>
+                                </div>
+                                <div class="div-btn2">
+                                    <a href="#" class="btn btn-agregar" id="agregarProducto">Agregar</a>
+                                    <a href="#" class="btn btn-eliminar">Eliminar</a>
+                                </div>
                             </div>
+                           
                         </div>
                         <div class="row">
                             
                             <div class="tabla">
                                 <table id="t01">
-                                    <tr>
-                                        <th>Oferta</th>
-                                        <th>Descuento</th> 
-                                        <th>Descripcion</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Hamburguesa A</td>
-                                        <td>50%</td>
-                                        <td>
-                                            <p>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                            </p> 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hamburguesa A</td>
-                                        <td>50%</td>
-                                        <td>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Hamburguesa A</td>
-                                        <td>50%</td>
-                                        <td>
-                                        <p>
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                        </p> 
-                                        </td>
-                                    </tr>
+                                    
                                 </table>
                             </div>
                         </div>
@@ -115,7 +117,9 @@
             </div> 
         </div>
     </div>
-    
-    <script src="js/admin.js"></script>
+    <div id="errores"></div>
+    <script src="./js/admin.js"></script>
+    <script src="./js/combo.js"></script>
+    <script src="./js/bloqueoAdmin.js"></script>
 </body>
 </html>

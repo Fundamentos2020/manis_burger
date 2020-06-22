@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administracion-Clientes</title>
-    <link rel="stylesheet" href="css/administracion.css">
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="./css/administracion.css">
+    <link rel="stylesheet" href="./estilos.css">
+    <link href="./fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="./fontawesome/css/brands.css" rel="stylesheet">
+    <link href="./fontawesome/css/solid.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Baloo+2|Bellota+Text&display=swap" rel="stylesheet">
     <link href="https://fonts.gsoogleapis.com/css?family=Bellota|Roboto&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/69dc21a533.js" crossorigin="anonymous"></script>
@@ -22,8 +25,9 @@
                 </div>
                 <a href="admin_Ventas.html" class="col-m-10 offset-m-1 col-s-10 offset-s-1 div-btn btn-panel">Ventas</a>
                 <a href="admin_Productos.html" class="col-m-10 offset-m-1 col-s-10 offset-s-1 div-btn btn-panel">Productos</a>
-                <a href="admin_ofertas.html" class="col-m-10 offset-m-1 col-s-10 offset-s-1 div-btn btn-panel">Ofertas</a>
+                <a href="admin_ofertas.html" class="col-m-10 offset-m-1 col-s-10 offset-s-1 div-btn btn-panel">Combos</a>
                 <a href="admin_Clientes.html" class="col-m-10 offset-m-1 col-s-10 offset-s-1 div-btn btn-panel">Usuarios</a>
+                <a href="./index.html" class="col-m-10 offset-m-1 col-s-10 offset-s-1 div-btn btn-panel">Pagina</a>
             </div>
         </div>
         <span class="letrero-bar">Mani´s Burger</span>
@@ -34,73 +38,15 @@
         <div class="row">
             <div class="seccion-contenido col-m-12 col-s-12">
                 <div class="titulo-seccion center col-m-12 col-s-12">
-                    <span>Clientes</span>
+                    <span>Usuarios</span>
                 </div> 
                 <div class="seccion-forms col-m-10 col-s-10 offset-m-1 offset-s-1">
                     <div class="form">
                         <div class="row">
-                            <div class="col-m-4 col-s4">
-                                <div class="row">
-                                    <span class="label-text">Cliente: </span>
-                                </div>
-                                <div class="row">
-                                    <div class="col-m-4 col-s-4">
-                                       <select class="field" id="cliente">
-                                            <option value="1">Cliente A</option>
-                                            <option value="2">Cliente B</option>
-                                            <option value="3">Cliente C</option>
-                                            <option value="4">Cliente D</option>
-                                        </select> 
-                                    </div>
-                                   <div class="col-m-2 offset-m-6 col-s-3 offset-s-4">
-                                            <a href="#" class="btn btn-eliminar">Eliminar</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                        </div>
-                        <div class="row">
                             <div class="tabla col-s-12">
                                 <table id="t01">
-                                    <tr>
-                                        <th>ID CLIENTE</th>
-                                        <th>NOMBRE</th> 
-                                        <th>Direccion</th>
-                                        <th>E-MAIL</th>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Perez Gutierrez</td>
-                                        <td>
-                                            Av. DE LOS PINOS # 100 SOLEDAD GS
-                                        </td>
-                                        <td>
-                                            PEREZ_34@EMAIL.COM
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Perez Gutierrez</td>
-                                        <td>
-                                            Av. DE LOS PINOS # 100 SOLEDAD GS
-                                        </td>
-                                        <td>
-                                            PEREZ_34@EMAIL.COM
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Perez Gutierrez</td>
-                                        <td>
-                                            Av. DE LOS PINOS # 100 SOLEDAD GS
-                                        </td>
-                                        <td>
-                                            PEREZ_34@EMAIL.COM
-                                        </td>
-                                    </tr>
+                                   
+                                   
                                 </table>
                             </div>
                         </div>
@@ -109,7 +55,8 @@
             </div> 
         </div>
     </div>
-    
     <script src="js/admin.js"></script>
+    <script src="./js/verClientes.js"></script>
+    <script src="./js/bloqueoAdmin.js"></script>
 </body>
 </html>

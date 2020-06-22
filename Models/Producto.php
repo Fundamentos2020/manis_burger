@@ -1,7 +1,5 @@
 <?php 
 
-class ProductoException extends Exception {}
-
 class Producto {
     private $_idProducto;
     private $_Nombre;
@@ -44,44 +42,35 @@ class Producto {
     }
 
     public function setIDProducto($idProducto) {
-        if ($idProducto !== null && (!is_numeric($idProducto) || $idProducto <= 0 || $idProducto >= 2147483647 || $this->_idProducto !== null)) {
-            throw new ProductoException("Error en IDProducto de Producto");
-        }
         $this->_idProducto = $idProducto;
     }
 
     public function setNombre($Nombre) {
         if ($Nombre === null || strlen($Nombre) > 50 || strlen($Nombre) < 1) {
-            throw new ProductoException("Error en el nombre de producto");
+            throw new TareaException("Error en el nombre de producto");
         }
         $this->_Nombre = $Nombre;
     }
 
     public function setUrlImagen($urlImagen) {
         if ($urlImagen !== null && strlen($urlImagen) > 200) {
-            throw new ProductoException("Error en la url de la imagen del producto");
+            throw new TareaException("Error en la url de la imagen del producto");
         }
         $this->_urlImagen = $urlImagen;
     }
 
     public function setDescripcion($Descripcion) {
-        if ($Descripcion !== null && strlen($Descripcion) > 150) {
-            throw new ProductoException("Error en la descripcion de producto");
-        }
+        
         $this->_Descripcion = $Descripcion;
     }
 
     public function setPrecio($Precio) {
-        if ($Precio !== null || $Precio <= 0) {
-            throw new ProductoException("Error en precio de producto");
-        }
+       
         $this->_Precio = $Precio;
     }
     
     public function setDescuento($Descuento) {
-        if ($Descuento !== null || $Descuento <= 0 ) {
-            throw new ProductoException("Error en descuento de producto");
-        }
+       
         $this->_Descuento = $Descuento;
     }
 
@@ -90,7 +79,7 @@ class Producto {
 
         $producto['idProducto'] = $this->getIDProduto();
         $producto['Nombre'] = $this->getNombre();
-        $producto['urlImagenn'] = $this->getUrlImagen();
+        $producto['urlImagen'] = $this->getUrlImagen();
         $producto['Descripcion'] = $this->getDescripcion();
         $producto['Precio'] = $this->getPrecio();
         $producto['Descuento'] = $this->getDescuento();
