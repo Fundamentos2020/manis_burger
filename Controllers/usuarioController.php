@@ -33,7 +33,7 @@
             }
         }
         else{
-            echo("Tarea no encontrada.");
+            echo("Tarea no encontrada. no encontre la tarea");
         }
     } catch (PDOException $e){
        echo ("error de base de datos");
