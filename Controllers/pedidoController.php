@@ -59,7 +59,7 @@
                 else{
                     $id =$_SESSION['idPedido'];
                     $subtotal = $_GET['precio']* $_GET['cantidad'];
-                    echo("precio: ".$_GET['precio']."cantidad: ".$_GET['cantidad']."fecha: ".$_GET['fechaPedido']."sesion idpedido:".$_SESSION['idPedido']);
+                    //echo("precio: ".$_GET['precio']."cantidad: ".$_GET['cantidad']."fecha: ".$_GET['fechaPedido']."sesion idpedido:".$_SESSION['idPedido']);
                     if(isset($_GET['idProducto'])!=null && isset($_GET['idCombo'])==null)
                     {
                         $SQL= 'INSERT INTO `detallepedido`(`Cantidad`, `Subtotal`, `Producto_idProducto`, `idPedido`)
