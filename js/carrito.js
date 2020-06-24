@@ -2,76 +2,151 @@
 const dir = 'http://localhost:80/manis_burger/';*/
 let total =0;
 verCarrito()
-verCarrito2()
+//verCarrito2()
 
 function verCarrito() {
-    var liga = api+'pedidoController.php?tarea=consultaCarrito';
-
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) { 
-            let data = JSON.parse(this.responseText);
-            let texto = ""
-            total=0
-            //document.getElementById('preview').innerHTML=this.responseText;
-            console.log('productos: ')
-            console.log(data);
-            if(data.error !=null)
+    //var liga = api+'pedidoController.php?tarea=consultaCarrito';
+    let texto = ""
+    total=0
+    if(localStorage.getItem('carrito'))
+    {
+       var carrito=JSON.parse(localStorage.getItem('carrito'))
+        var idImagen=0
+        var id=0;
+        var conta = 0;
+       carrito.forEach(function(item){
+            if(item.urlImagen)
             {
-                document.getElementById('comprasEspacio'),innerText=data.error;
+                
+                idImagen= item.urlImagen
             }
             else{
-                data.forEach(function(item){
-                    texto += `<div class="row margin-bootom-20px">
-                            <div class="col-m-2 col-s-9 offset-m-1 box-img">
-                                <img src="./Controllers/vista.php?id=${item.imagen}" alt="">
-                            </div>
-                            <div class="col-m-5 col-s-10 offset-m-1 offset-s-1">
+                idImagen= item.idImagen
+            }
+
+            if(item.idCombo)
+            {
+                id=item.idCombo;
+            }
+            else{
+                id=item.idProducto;
+            }
+            texto += `<div class="row margin-bootom-20px">
+                        <div class="col-m-2 col-s-12 offset-m-1 box-img">
+                            <img src="../Controllers/vista.php?id=${idImagen}" alt="">
+                        </div>
+                        <div class="col-m-5 col-s-10 offset-m-1 offset-s-1">
+                            <div class="row">
+                                <div class=" row titulo-produducto">
+                                    ${item.Nombre}
+                                </div>
+                                <div class=" row precio-producto">
+                                    Cantidad: ${item.cantidad} Subtotal: $${parseFloat(item.cantidad)*parseFloat(item.Precio)}
+                                </div>
                                 <div class="row">
-                                    <div class=" row titulo-produducto">
-                                        ${item.nombre}
-                                    </div>
-                                    <div class=" row precio-producto">
-                                        Precio: $${item.subtotal}
-                                    </div>
-                                    <div class="row">
-                                        <a href="#" class="btn btn-eliminar" onclick="eliminarProducto(${item.idDetallePedido})">Eliminar</a>
-                                    </div>
+                                    <a href="#" class="btn btn-eliminar" onclick="eliminarProducto(${conta})">Eliminar</a>
                                 </div>
                             </div>
-                        </div>`;
+                        </div>
+                    </div>`;
 
-                    total=parseFloat(item.subtotal)+total;
-                });
-            }
-           document.getElementById('comprasEspacio').innerHTML=texto;
-           document.getElementById('total').innerText = 'Total: $'+total;
-        }
-       
-    };
-    
-    xhttp.open("GET",liga, true);
-    xhttp.send();
+                total=(parseFloat(item.cantidad)*parseFloat(item.Precio))+total;
+                conta+=1
+       }
+       )
+
+    }
+    document.getElementById('comprasEspacio').innerHTML=texto;
+    document.getElementById('total').innerText = 'Total: $'+total; 
+
 }
 
-function eliminarProducto(idDetallePedido) {
-    var liga = api+'pedidoController.php?tarea=eliminaDetalle&idDetallePedido='+idDetallePedido;
-
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) { 
-           
-          verCompras()
+function eliminarProducto(id) {
+    if(localStorage.getItem('carrito')){
+        var carrito= JSON.parse(localStorage.getItem('carrito'))
+        
+       // delete carrito[id]
+        carrito.splice(id,1)
+        if(carrito.length==0)
+        {
+            console.log(carrito)
+            localStorage.removeItem('carrito')
         }
-       
-    };
-    
-    xhttp.open("GET",liga, true);
-    xhttp.send();
+        else{
+            localStorage.removeItem('carrito')
+            localStorage.setItem('carrito', JSON.stringify(carrito))
+            console.log(carrito)
+        }
+    }
+    verCarrito();
 }
 
 document.getElementById('btn-pagar').addEventListener('click', function (e) {
     e.preventDefault()
+
+    if(localStorage.getItem('carrito'))
+    {
+        var carrito = JSON.parse(localStorage.getItem('carrito'))
+        carrito.forEach(function(item){
+            if(item.idCombo)
+            {
+                insertaPedido(item.idCombo, item.Precio, item.cantidad, 'combo')
+
+            }
+            else{
+                insertaPedido(item.idProducto, item.Precio, item.cantidad, 'producto')
+            }
+        })
+        localStorage.removeItem('carrito')
+        borrarIdPedido()
+    }
+    else{
+        alert('no hay nada')
+    }
+    
+})
+
+
+function fecha() {
+
+    var hoy = new Date();
+    var dia = hoy.getDay();
+    var mes = hoy.getMonth();
+    var año = hoy.getFullYear();
+
+    return año+ '-'+mes+'-'+ dia;
+    
+}
+
+function insertaPedido(id, precio, cantidad, metodo) {
+    if(cantidad>0)
+    {
+        var hoy = fecha();
+        if(metodo=='combo')
+        {
+            var liga = api+"pedidoController.php?tarea=insertar&&idCombo="+id+"&cantidad="+cantidad+"&precio="+precio+"&fechaPedido="+hoy ;
+        }
+        else{
+            var liga = api+"pedidoController.php?tarea=insertar&&idProducto="+id+"&cantidad="+cantidad+"&precio="+precio+"&fechaPedido="+hoy ;
+        }
+        
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) { 
+
+                console.log(this.responseText)
+            }
+        };
+        
+        xhttp.open("GET",liga, true);
+        xhttp.send();
+    }
+    else{
+        alert('La cantidad tiene que ser mayor a cero...')
+    }
+}
+
+function borrarIdPedido() {
     var liga = api+'pedidoController.php?tarea=borrarIDpedido';
 
     xhttp = new XMLHttpRequest();
@@ -89,67 +164,4 @@ document.getElementById('btn-pagar').addEventListener('click', function (e) {
     
     xhttp.open("GET",liga, true);
     xhttp.send();
-    
-    
-})
-
-function verCarrito2() {
-    var liga = api+'pedidoController.php?tarea=consultaCarrito2';
-
-    xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) { 
-            let data = JSON.parse(this.responseText);
-            let texto = ""
-            let aux=0;
-            //document.getElementById('preview').innerHTML=this.responseText;
-            console.log(data);
-            if(data.error !=null)
-            {
-                document.getElementById('comprasEspacio'),innerText=data.error;
-            }
-            else{
-
-                data.forEach(function(item){
-                    
-                    if(aux!=item.idDetallePedido)
-                    {
-                        texto += `<div class="row margin-bootom-20px">
-                            <div class="col-m-2 col-s-12 offset-m-1 box-img">
-                                <img src="./Controllers/vista.php?id=${item.imagen}" alt="">
-                            </div>
-                            <div class="col-m-5 col-s-10 offset-m-1 offset-s-1">
-                                <div class="row">
-                                    <div class=" row titulo-produducto">
-                                        ${item.nombre}
-                                    </div>
-                                    <div class=" row precio-producto">
-                                        Precio: $${item.subtotal}
-                                    </div>
-                                    <div class="row">
-                                        <a href="#" class="btn btn-eliminar" onclick="eliminarProducto(${item.idDetallePedido})">Eliminar</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>`;
-                         total=parseFloat(item.subtotal)+total
-                    }
-                    aux=item.idDetallePedido;
-                });
-            }
-           document.getElementById('comprasEspacio').innerHTML+=texto;
-           document.getElementById('total').innerText = 'Total: $'+total;
-        }
-       
-    };
-
-    xhttp.open("GET",liga, true);
-    xhttp.send();
-}
-
-
-function verCompras()
-{
-    verCarrito()
-    verCarrito2()
 }

@@ -174,6 +174,27 @@
                                             echo(json_encode($resp));
                                         }
                                     }   
+                                    else{
+                                        if($_GET['tarea']=='actualizar')
+                                        {
+                                            $SQL='UPDATE `combo` SET `Nombre`="'.$_GET['nombre'].'",`Precio`='.$_GET['precio'].',`Descripcion`="'.$_GET['descripcion'].'",`Descuento`='.$_GET['descuento'].' WHERE idCombo='.$_GET['id'];
+                                            $query = $connection->prepare($SQL);
+                                            $query->execute();
+
+                                            $rowCount = $query->rowCount();
+                                            if($rowCount>0)
+                                            {
+                                                $mensaje = array();
+                                                $mensaje['mensaje']='Se actualizo el combo...';
+                                                echo(json_encode($mensaje));
+                                            }
+                                            else{
+                                                $mensaje = array();
+                                                $mensaje['mensaje']='No se actualizo el combo... '.$SQL;
+                                                echo(json_encode($mensaje));
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }

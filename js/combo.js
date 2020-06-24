@@ -7,7 +7,8 @@ cargaProductosCombo();
 function cargarCombos(){
     var listaCombo =document.getElementById('listCombo');
     var tabla = document.getElementById('t01');
-    
+    var lcombos = document.getElementById('lproductos')
+    lcombos.innerHTML= '<option value="0">Ninguno</option>';
     tabla.innerHTML =`  <tr>
                             <th>Nombre Combo</th>
                             <th>Precio</th> 
@@ -45,6 +46,7 @@ function cargarCombos(){
             });
             tabla.innerHTML+=texto;
             listaCombo.innerHTML=opciones;
+            lcombos.innerHTML+=opciones
         } catch (error) {
             console.log(error)
            
@@ -253,3 +255,86 @@ function eliminarDC(id) {
     xhttp.open("GET",liga, true);
     xhttp.send();
 }
+
+document.getElementById('lproductos').addEventListener('change',function(e){
+    e.preventDefault();
+    var nombreCombo = document.getElementById('nombreCombo');
+    var precio= document.getElementById('precio');
+    var descuento= document.getElementById('descuento');
+    var descripcion=document.getElementById('descripcion');
+    var id = this.value;
+        if(nombreCombo!="" && precio != null && descuento!= null && descripcion!="")
+        { 
+            var liga = api+"comboController.php?tarea=consultaCombo&&id="+id;
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) { 
+                try {
+                    let data = JSON.parse(this.responseText);
+                    nombreCombo.value = data[0].Nombre
+                    precio.value = data[0].Precio
+                    descuento.value = data[0].Descuento
+                    descripcion.value = data[0].Descripcion
+                } catch (error) {
+                   console.log(this.responseText)
+                }
+                
+            }
+            
+            };
+            
+            xhttp.open("GET",liga, true);
+            xhttp.send();
+        }
+        else{
+            alert('Algunos Campos estan vacios')
+        }
+    
+})
+
+
+document.getElementById('actualizar').addEventListener('click', function(e){
+    e.preventDefault()
+    var nombreCombo = document.getElementById('nombreCombo').value;
+    var precio= parseFloat( document.getElementById('precio').value);
+    var descuento= parseFloat(document.getElementById('descuento').value);
+    var descripcion=document.getElementById('descripcion').value;
+    var id = document.getElementById('lproductos').value;
+    if(typeof(precio)!='number' && typeof(descuento)!='number')
+    {
+        alert('En precio y descuento solo se admiten numeros')
+    }
+    else{
+        if(nombreCombo!="" && precio != null && descuento!= null && descripcion!="")
+        { 
+            var liga = api+"comboController.php?tarea=actualizar&&nombre="+nombreCombo+"&&precio="+precio+"&&descuento="+descuento+"&&descripcion="+descripcion+"&&id="+id;
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) { 
+                try {
+                    let data = JSON.parse(this.responseText);
+                    
+                    if(data.mensaje!=null)
+                    {
+                        alert(data.mensaje);
+                        cargarCombos();
+                    }
+                    //alert(this.responseText)
+                } catch (error) {
+                   console.log(this.responseText)
+                }
+                
+            }
+            
+            };
+            
+            xhttp.open("GET",liga, true);
+            xhttp.send();
+        }
+        else{
+            alert('Algunos Campos estan vacios')
+        }
+    }
+
+
+})

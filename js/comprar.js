@@ -10,14 +10,45 @@ document.getElementById('btn-comprar').addEventListener('click', function(e){
     var id= getParameterByName('id');
     var cantidad = document.getElementById('cantidad').value;
     var liga = api+"productoController.php?tarea=consultaProducto&&id="+id;
+    var carrito = [];
     xhttp = new XMLHttpRequest();
+
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) { 
-            let data = JSON.parse(this.responseText);
+            
+            try {
+                let data = JSON.parse(this.responseText);
+                if(data.error)
+                {
+                    alert(data.error)
+                }
+                else{
+                    
+                    if(localStorage.getItem('carrito'))
+                    {
+                        carrito = JSON.parse(localStorage.getItem('carrito'))
+                        data.cantidad = cantidad;
+                        carrito.push(data);
+                        localStorage.removeItem('carrito')
+                        localStorage.setItem("carrito",JSON.stringify(carrito))
+                    }
+                    else{
+                        carrito.push(data);
+                        data.cantidad = cantidad;
+                        localStorage.setItem("carrito",JSON.stringify(carrito))
+                    }
+                    alert('Tu producto fue agregado al carrito.')
+                }
+                
             //document.getElementById('preview').innerHTML=this.responseText;
-            console.log(data);
-            console.log("precio1: "+data.Precio)
-           insertaPedido(id,data.Precio, cantidad)
+                //console.log(data);
+               // console.log("precio1: "+data.Precio)
+                //insertaPedido(id,data.Precio, cantidad)
+            } catch (error) {
+                console.log(error)
+            }
+            
+            
         }
     };
     
@@ -51,8 +82,8 @@ function insertaPedido(id, precio, cantidad) {
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) { 
                 let data = JSON.parse(this.responseText);
-
-                alert(data.mensaje)
+                //document.getElementById('espacioerrores').innerHTML=this.responseText
+               alert(data.mensaje)
             }
         };
         

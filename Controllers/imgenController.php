@@ -31,7 +31,7 @@
             if($rowCount>0)
             {
                 echo ('Subido!!!');
-                header("Location:http://localhost/manis_burger/admin_Productos.html");
+                header("Location:http://localhost/manis_burger/html/admin_Productos.html");
             }
             else{
                 echo('No se realizo.');

@@ -1,6 +1,7 @@
 <?php
     require('../Models/carrito.php');
     require('../Models/detallePedido.php');
+    require('../Models/Auxiliar.php');
     session_start(); 
   
     if(isset($_SESSION)!=null&&isset($_SESSION['id'])&&$_SESSION['id']!="")
@@ -59,7 +60,7 @@
                 else{
                     $id =$_SESSION['idPedido'];
                     $subtotal = $_GET['precio']* $_GET['cantidad'];
-                    //echo("precio: ".$_GET['precio']."cantidad: ".$_GET['cantidad']."fecha: ".$_GET['fechaPedido']."sesion idpedido:".$_SESSION['idPedido']);
+                   // echo("precio: ".$_GET['precio']."cantidad: ".$_GET['cantidad']."fecha: ".$_GET['fechaPedido']."sesion idpedido:".$_SESSION['idPedido']);
                     if(isset($_GET['idProducto'])!=null && isset($_GET['idCombo'])==null)
                     {
                         $SQL= 'INSERT INTO `detallepedido`(`Cantidad`, `Subtotal`, `Producto_idProducto`, `idPedido`)
@@ -79,7 +80,17 @@
                     }
                     $query = $connection->prepare($SQL);
                     $query->execute();
-                
+                    $rowCount = $query->rowCount();
+                    if($rowCount>0)
+                    {
+                        $mensaje['mensaje']='se agrego el producto';
+                        echo(json_encode($mensaje));
+                    }
+                    else{
+                        $mensaje = array();
+                        $mensaje['mensaje']='No se agrego el producto';
+                        echo(json_encode($mensaje));
+                    }
                 }
             }
             else{
@@ -118,7 +129,7 @@
                 else {
                     if ($_GET['tarea']=='eliminaDetalle') {
                         $SQL="DELETE FROM `detallepedido` WHERE `idDetallePedido` = ".$_GET['idDetallePedido'];
-                        echo($SQL);
+                      //  echo($SQL);
                         $query = $connection->prepare($SQL);
                         $query->execute();
                         echo('se elimino');
@@ -177,9 +188,44 @@
                                     }
                                 }
                                 else{
-                                    $resp = array();
-                                    $resp['error']="no es tarea";
-                                    echo(json_encode($resp)); 
+                                    if($_GET['tarea']=='consultaProductosDetC')
+                                    {
+                                        $SQL='SELECT producto.Nombre, producto.precio, detallepedido.Cantidad, detallepedido.Subtotal FROM producto INNER JOIN detallepedido on producto.idProducto=detallepedido.Producto_idProducto';
+                                        $query = $connection->prepare($SQL);
+                                        $query->execute();
+                                        $productos = array();
+                                        
+                                        while($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                                            $producto = new Auxiliar($row['Nombre'], $row['precio'], $row['Cantidad'],$row['Subtotal']);
+                                
+                                            $productos[] = $producto->getArray();
+                                        }
+
+                                        $SQL='SELECT combo.Nombre, combo.Precio, detallepedido.Cantidad, detallepedido.Subtotal FROM combo INNER JOIN detallepedido on combo.idCombo=detallepedido.COMBO_idCOMBO';
+                                        $query = $connection->prepare($SQL);
+                                        $query->execute();;
+                                        
+                                        while($row = $query->fetch(PDO::FETCH_ASSOC)) {
+                                            $producto = new Auxiliar($row['Nombre'], $row['Precio'], $row['Cantidad'],$row['Subtotal']);
+                                
+                                            $productos[] = $producto->getArray();
+                                        }
+                                        if(count($productos)>0)
+                                        {
+                                            echo(json_encode($productos));
+                                        }
+                                        else{
+                                            $resp = array();
+                                            $resp['mensaje']="NO HAY PRODUCTOS";
+                                            echo(json_encode($resp));
+                                        }
+                                    }
+                                    else{
+                                        $resp = array();
+                                        $resp['error']="no es tarea";
+                                        echo(json_encode($resp)); 
+                                    }
+                                    
                                 }
                                 
                             }

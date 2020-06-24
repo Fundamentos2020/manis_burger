@@ -28,7 +28,7 @@ function verProducto() {
                 if(item.idCombo!=aux)
                 {
                     titulo.innerText=item.Nombre;
-                    foto.style.backgroundImage =`url('./Controllers/vista.php?id=${item.idImagen}')`;
+                    foto.style.backgroundImage =`url('../Controllers/vista.php?id=${item.idImagen}')`;
                     precio.innerText+=`${item.Precio}`;
                     descripcion.innerText =`${item.Descripcion}` ;
                     if(item.Descuento == 0)
@@ -43,7 +43,7 @@ function verProducto() {
                     aux=item.idCombo;
                 }
 
-                imagenes+=`<img class="miniImagenes" src="./Controllers/vista.php?id=${item.idImagen}" onclick="verImagen(${item.idImagen})">`
+                imagenes+=`<img class="miniImagenes" src="../Controllers/vista.php?id=${item.idImagen}" onclick="verImagen(${item.idImagen})">`
             })
             espacioImagenes.innerHTML=imagenes
         }
@@ -67,7 +67,7 @@ function getParameterByName(name) {
 
 function verImagen(idIma) {
     var foto = document.getElementById('foto');
-    foto.style.backgroundImage =`url('./Controllers/vista.php?id=${idIma}')`;
+    foto.style.backgroundImage =`url('../Controllers/vista.php?id=${idIma}')`;
     
 }
 
@@ -76,15 +76,42 @@ document.getElementById('comprarCombo').addEventListener('click', function(e){
     var id= getParameterByName('id');
     var cantidad = document.getElementById('cantidad').value;
     var liga = api+"comboController.php?tarea=consultaCombo&&id="+id;
-
+    var carrito = []
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) { 
-            let data = JSON.parse(this.responseText);
+            try {
+                let data = JSON.parse(this.responseText);
+                if(data.error)
+                {
+                    alert(data.error)
+                }
+                else{
+                    
+                    if(localStorage.getItem('carrito'))
+                    {
+                        carrito = JSON.parse(localStorage.getItem('carrito'))
+                        data[0].cantidad = cantidad;
+                        console.log(data[0])
+                        carrito.push(data[0]);
+                        localStorage.removeItem('carrito')
+                        localStorage.setItem("carrito",JSON.stringify(carrito))
+                    }
+                    else{
+                        data[0].cantidad = cantidad;
+                        carrito.push(data[0])
+                        localStorage.setItem("carrito",JSON.stringify(carrito))
+                    }
+                    alert('Tu producto fue agregado al carrito.')
+                }
+            } catch (error) {
+                console.log(error)
+            }
+            /*let data = JSON.parse(this.responseText);
             //document.getElementById('preview').innerHTML=this.responseText;
             console.log(data);
             console.log("precio1: "+data.Precio)
-           insertaPedido(id,data[0].Precio, cantidad)
+           insertaPedido(id,data[0].Precio, cantidad)*/
         }
     };
     
@@ -118,7 +145,7 @@ function insertaPedido(id, precio, cantidad) {
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) { 
                 let data = JSON.parse(this.responseText);
-
+                //document.getElementById('espacioerrores').innerHTML=this.responseText
                 alert(data.mensaje)
             }
         };

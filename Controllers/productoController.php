@@ -22,7 +22,7 @@
         {
             if($_GET['tarea']==='consultaProductos')
             {
-                $SQL = "SELECT * FROM producto";
+                $SQL = 'SELECT * FROM `producto` ORDER BY producto.idProducto DESC';
                 $query = $connection->prepare($SQL);
                 $query->execute();
                 $productos = array();
@@ -50,7 +50,7 @@
                     echo('se elimino');
                }
                else{
-                    if($_GET['tarea']==='consultaProducto')
+                   if($_GET['tarea']==='consultaProducto')
                     {
                         $SQL = "SELECT * FROM producto where idProducto=".$_GET['id'];
                         $query = $connection->prepare($SQL);
@@ -72,7 +72,26 @@
                         }
                     }
                     else{
-                         echo('no entro');
+                        if($_GET['tarea']==='actualizar')
+                        {
+                            $SQL = 'UPDATE `producto` SET  `Nombre`="'.$_GET['nombre'].'",`urlImagen`='.$_GET['idImagen'].',`descripcion`="'.$_GET['descripcion'].'",`precio`='.$_GET['precio'].',`descuento`='.$_GET['descuento'].' WHERE idProducto='.$_GET['idProducto'];
+                            //echo($SQL);
+                            $query = $connection->prepare($SQL);
+                            $query->execute();
+                            
+                            $rowCount = $query->rowCount();
+                            if($rowCount>0)
+                            {
+                                echo('Se actualizo el registro');
+                            }
+                            else{
+                                echo('No Se actualizo el registro');
+                            }
+                        } 
+                        else{
+                            echo('no entro');
+                        }
+                        
                     }
                    
                }

@@ -23,7 +23,7 @@ function cargarImagenesCombo() {
                 opciones+=" <option value="+item.idImagen+">"+item.nombre+"</option>"
                 if(cont==0)
                 {
-                    var linea =  ' <img src="./Controllers/vista.php?id='+item.idImagen+'" style="width: 130px; height: 130px;">'
+                    var linea =  ' <img src="../Controllers/vista.php?id='+item.idImagen+'" style="width: 130px; height: 130px;">'
                     var vista = document.getElementById('vista');
                     vista.innerHTML=linea
                 }
@@ -75,7 +75,7 @@ document.getElementById('agregar').addEventListener('click',function(e){
 document.getElementById('imagenes').addEventListener('change',function(e){
     var vista = document.getElementById('vista');
     console.log(this.value)
-    var linea =  ' <img src="./Controllers/vista.php?id='+this.value+'" style="width: 130px; height: 130px;">'
+    var linea =  ' <img src="../Controllers/vista.php?id='+this.value+'" style="width: 130px; height: 130px;">'
     console.log(linea)
     vista.innerHTML=linea
 })
@@ -83,7 +83,8 @@ document.getElementById('imagenes').addEventListener('change',function(e){
 function tablaProductos()
 {
     var liga = api+"productoController.php?tarea=consultaProductos";
- 
+    var lproductos = document.getElementById('lproductos')
+    lproductos.innerHTML= '<option value="0">Ninguno</option>';
     var tabla = document.getElementById('t01')
     tabla.innerHTML=" <tr>"+
                    " <th>Nombre</th>"+
@@ -98,6 +99,7 @@ function tablaProductos()
     if (this.readyState == 4 && this.status == 200) { 
         let data = JSON.parse(this.responseText);
         let renglones=""
+        let opciones =""
         //document.getElementById('preview').innerHTML=this.responseText;
        // console.log(data);
         data.forEach(function(item){
@@ -109,14 +111,16 @@ function tablaProductos()
                 "<p>"+item.Descripcion+" </p>" +
             "</td>"+
             "<td>"+
-                "<img src=\"./Controllers/vista.php?id="+item.urlImagen+"\" style=\"width: 50px; height: 50px;\">" +
+                "<img src=\"../Controllers/vista.php?id="+item.urlImagen+"\" style=\"width: 50px; height: 50px;\">" +
             "</td>"+
             "<td>"+
                 "<div class=\"row div-btn2\"><a href=\"#\" class=\"btn btn-eliminar\" onclick=\"eliminarProducto("+item.idProducto+")\">Eliminar</a></div>"
             "</td>"+
             "</tr>";
+            opciones+=` <option value="${item.idProducto}">${item.Nombre}</option>`
         });
        tabla.innerHTML+=renglones;
+       lproductos.innerHTML+=opciones
     }
     };
     
@@ -182,3 +186,95 @@ function borrarImagen(id) {
         xhttp.open("GET",liga, true);
         xhttp.send();
 }
+
+document.getElementById('lproductos').addEventListener('change',function(e) {
+    e.preventDefault()
+    var nombre = document.getElementById('nomProd');
+    var descripcion = document.getElementById('descripcion');
+    var idImagen = document.getElementById('imagenes');
+    var descuento = document.getElementById('descuento');
+    var precio = document.getElementById('precio');
+    
+    if(this.value!=0)
+    {
+        var liga = api+"productoController.php?tarea=consultaProducto&&id="+this.value;
+
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) { 
+                try {
+                    let data = JSON.parse(this.responseText);
+                    let texto = ""
+                    //document.getElementById('preview').innerHTML=this.responseText;
+                    console.log(data);
+                    nombre.value = data.Nombre;
+                    descripcion.value = data.Descripcion;
+                    idImagen.value = data.urlImagen;
+                    descuento.value = data.Descuento;
+                    precio.value = data.Precio;
+                    var vista = document.getElementById('vista');
+                    var linea =  ' <img src="../Controllers/vista.php?id='+data.urlImagen+'" style="width: 130px; height: 130px;">'
+                    
+                    vista.innerHTML=linea
+                    
+                } catch (error) {
+                    console.log(error)
+                }
+                
+            }
+        
+        };
+        
+        xhttp.open("GET",liga, true);
+        xhttp.send();
+    }
+    else{
+        nombre.value = "";
+        descripcion.value = "";
+        descuento.value = "";
+        precio.value ="";
+    }
+}
+)
+
+document.getElementById('actualizar').addEventListener('click', function(e){
+    e.preventDefault()
+
+    var nombre = document.getElementById('nomProd').value;
+    var descripcion = document.getElementById('descripcion').value;
+    var idImagen = document.getElementById('imagenes').value;
+    var descuento = document.getElementById('descuento').value;
+    var precio = document.getElementById('precio').value;
+    var id = document.getElementById('lproductos').value;
+    if(descuento=="")
+    {
+        descuento=0;
+    }
+    if(id==0)
+    {
+        alert('No paso nada...')
+        return false;
+    }
+    else{
+        if(nombre!=""&&descripcion!=""&&idImagen!=""&&descuento!=""&&precio!="")
+        { 
+        var liga = api+"productoController.php?tarea=actualizar&nombre="+nombre+"&descripcion="+descripcion+"&idImagen="+idImagen+
+                    "&descuento="+descuento+"&precio="+precio+"&&idProducto="+id;
+            console.log(liga)
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) { 
+                    alert(this.responseText)
+                    tablaProductos()
+                }
+            };
+            
+            xhttp.open("GET",liga, true);
+            xhttp.send();
+        }
+        else{
+            alert("Se necesitan todos los campos")
+        }
+    }
+
+})

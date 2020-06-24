@@ -21,7 +21,7 @@ function LeeJonson(){
                     </div>
                     <div class="row">
                         <div class="col-m-4 col-s-12">
-                        <img src="./Controllers/vista.php?id=${item.urlImagen}">
+                        <img src="../Controllers/vista.php?id=${item.urlImagen}">
                         </div>
                     </div>
                     <div class="row card-contenido">

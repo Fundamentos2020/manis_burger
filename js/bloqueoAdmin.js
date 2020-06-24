@@ -16,7 +16,7 @@ window.onload=function() {
             console.log(data);
             if(data.administrador =="NO")
             {
-                 window.location.href=dir+"index.html";
+                 window.location.href=dir+"html/index.html";
             }
            
        }catch(err)

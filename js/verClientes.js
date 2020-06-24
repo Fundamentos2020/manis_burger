@@ -50,7 +50,7 @@ function verClientes() {
 
 function eliminar(id) {
     var liga = api+"usuarioController.php?tarea=eliminar&id="+id;
-
+    console.log(liga)
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) { 

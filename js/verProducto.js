@@ -20,7 +20,7 @@ function verProducto() {
             //document.getElementById('preview').innerHTML=this.responseText;
             console.log(data);
             titulo.innerText=data.Nombre;
-            foto.style.backgroundImage =`url('./Controllers/vista.php?id=${data.urlImagen}')`;
+            foto.style.backgroundImage =`url('../Controllers/vista.php?id=${data.urlImagen}')`;
             precio.innerText+=`${data.Precio}`;
             descripcion.innerText =`${data.Descripcion}` ;
             if(data.Descuento == 0)

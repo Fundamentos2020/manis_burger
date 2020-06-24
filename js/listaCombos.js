@@ -20,7 +20,7 @@ function cargarDC() {
                                 </div>
                                 <div class="row">
                                     <div class="col-m-4 col-s-12">
-                                    <img src="./Controllers/vista.php?id=${item.idImagen}">
+                                    <img src="../Controllers/vista.php?id=${item.idImagen}">
                                     </div>
                                 </div>
                                 <div class="row card-contenido">

@@ -6,34 +6,34 @@ verVentas()
 
 function verVentas()
 {
-    var liga = api+'pedidoController.php?tarea=consultaDetallePedidos';
+    var liga = api+'pedidoController.php?tarea=consultaProductosDetC';
     var tabla = document.getElementById('t01')
     tabla.innerHTML = `<tr>
-                <th>Id de Venta</th>
-                <th>Cantidad</th> 
+                <th>Nombre</th>
                 <th>Precio</th> 
+                <th>Cantidad</th> 
                 <th>Subtotal</th>
             </tr>`
     xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) { 
-            //document.getElementById('espacio').innerHTML=this.responseText;
+           //document.getElementById('espacio').innerHTML=this.responseText;
             let data = JSON.parse(this.responseText);
             let texto = ""
             let total = 0;
-            //document.getElementById('preview').innerHTML=this.responseText;
+           // document.getElementById('preview').innerHTML=this.responseText;
             console.log(data);
-            if(data.error !=null)
+            if(data.mensaje !=null)
             {
                 document.getElementById('comprasEspacio'),innerText=data.error;
             }
             else{
                 data.forEach(function(item){
                     texto += `<tr>
-                                <td>${item.idDetallePedido}</td>
-                                <td>${item.cantidad}</td>
+                                <td>${item.nombre}</td>
+                                <td>${item.precio}</td>
                                 <td>
-                                    ${parseFloat(item.subtotal)/parseFloat(item.cantidad)}
+                                   ${item.cantidad}
                                 </td>
                                 <td>
                                    ${item.subtotal}
